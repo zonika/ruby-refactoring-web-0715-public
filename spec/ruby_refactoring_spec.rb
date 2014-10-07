@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "RubyRefactoring" do
-  let(:alfi) { Dog.new(name: "Alfi", breed: "Springer Spaniel", owner: "Steven Nunez") }
+  let(:alfi) { Dog.new("Alfi", "Springer Spaniel", "Steven Nunez") }
   let(:steven) { alfi.owner }
 
   describe "Dog" do
