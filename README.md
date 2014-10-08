@@ -6,13 +6,18 @@
 
 # Refactoring Ruby
 
+## Instructions
+
+- Review the ["lib/dog.rb" file]("./lib/dog.rb").
+- 
+
 ## Why is Refactoring Important?
 
 Our biggest priority when writing a method, an application, or any piece of software is simply to get it working. Once we have our code working, then our next priority is to improve and optimize our code that its behavior is well-intentioned and designed. Ultimately we refactor our code in order to improve its quality, clarity, and maintainability. 
 
 ## When Should You Refactor?
 
-Let's think about refactoring in the context of the Dog class we have available in `./lib/dog.rb`. 
+Let's think about refactoring in the context of the Dog class we have available in `./lib/dog.rb`. You'll notice that a lot of the methods, such as `walk(owner)`, `vet_checkup(owner)`, and `remove_leash(owner)`, have a dependency on an owner parameter. This should give us a clue that there should be an `Owner` class in which these methods are present. Logically, this is problematic because the `Dog` class should not have all of this responsibility of handling methods that should belong to an `Owner` class, so we need to decouple the logic of those three methods into a separate `Owner` class. 
 
 ## Refactoring Paradigms to keep in mind
 
@@ -28,10 +33,9 @@ Methods and, to some extent, classes should focus on doing one thing. This falls
 
 ```ruby
 def walk_dog(owner)
-	owner.get_leash
-	owner.get_plastic_bag
-	owner.attach_leash_to(owner.dog)
-	owner.walk_outside
+  owner.get_plastic_bag
+  owner.attach_leash_to(owner.dog)
+  owner.walk_outside
 end
 ```
 
@@ -39,14 +43,13 @@ This looks like there is too much going on in the `walk_dog(owner)` method. The 
 
 ```ruby
 def prepare_for_walk(owner)
-	owner.get_leash
-	owner.get_plastic_bag
-	owner.attach_leash_to(owner.dog)
+  owner.get_plastic_bag
+  owner.attach_leash_to(owner.dog)
 end
 
 def walk_dog(owner)
-	prepare_for_walk(owner)
-	owner.walk_outside
+  prepare_for_walk(owner)
+  owner.walk_outside
 end
 ```
 
