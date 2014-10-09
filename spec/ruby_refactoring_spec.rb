@@ -37,7 +37,6 @@ describe "RubyRefactoring" do
   describe "Owner" do
     describe '#name' do
       it 'returns the name' do
-        binding.pry
         expect(steven.name).to eq("Steven Nunez")
       end
     end
@@ -48,31 +47,39 @@ describe "RubyRefactoring" do
       end
     end
 
-    describe '#walk(dog)' do
-      it 'receives the #prepare_items_for method' do
-        expect(steven).to_receive(:prepare_items_for).with(alfi)
-        expect(steven.dog.leash).to eq(true)
-        expect(steven.dog.plastic_bag).to eq(true)
+    describe '#walk' do
+      it 'receives the #prepare_items method' do
+        expect(steven).to receive(:prepare_items)
+        steven.walk
       end
 
       it 'takes the dog on a walk' do
-        expect(steven.dog.walking?).to eq(true)
+        steven.walk
+        expect(steven.dog.leash).to eq(true)
+        expect(steven.dog.plastic_bag).to eq(true)
+        expect(steven.walking?).to eq(true)
       end
     end
 
-    describe '#vet_checkup_for(dog)' do
-      it 'receives the #prepare_items_for method' do
-        expect(steven).to_receive(:prepare_items_for).with(alfi)
+    describe '#vet_checkup' do
+      it 'receives the #prepare_items method' do
+        expect(steven).to receive(:prepare_items)
+        steven.vet_checkup
       end
 
       it 'takes the dog to the vet' do
+        steven.vet_checkup
         expect(steven.dog.leash).to eq(true)
         expect(steven.dog.plastic_bag).to eq(true)
-        expect(steven.dog.vet_checkup?).to eq(true)
+        expect(alfi.vet_checkup?(steven)).to eq(true)
       end
     end
 
-    describe '#prepare_items_for(dog)' do
+    describe '#prepare_items' do
+      before(:each) do
+        steven.prepare_items
+      end
+
       it 'sets leash attribute to true' do
         expect(steven.dog.leash).to eq(true)
       end
