@@ -8,8 +8,10 @@
 
 ## Instructions
 
-- Review the ["lib/dog.rb" file]("./lib/dog.rb").
-- 
+- Read why refactoring is important in the README below!
+- Review the `lib/dog.rb` file.
+- Refactor the commented logic in the `lib/dog.rb` file, and make the RSpec tests pass!
+- Ensure that the `:run` method is called on the Owner class in `config/environment.rb`.
 
 ## Why is Refactoring Important?
 
