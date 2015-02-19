@@ -1,5 +1,5 @@
 class Dog
-  attr_accessor :leash, :plastic_bag, :walking, :vet_checkup
+  attr_reader :leash, :plastic_bag, :walking, :vet_checkup
 
   def initialize(name, breed, owner_name)
     @name = name
