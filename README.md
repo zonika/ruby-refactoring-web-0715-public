@@ -1,8 +1,4 @@
----
-  tags: todo, tdd, refactoring
-  languages: ruby
-  resources: 1
----
+
 
 # Refactoring Ruby
 
