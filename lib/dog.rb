@@ -4,7 +4,9 @@ class Dog
   def initialize(name, breed, owner_name)
     @name = name
     @breed = breed
-    @owner = owner_name
+    @owner = Owner.new
+    @owner.name = owner_name
+    @owner.dog=self
     @leash = false
     @plastic_bag = false
     @walking = false
@@ -32,7 +34,7 @@ class Dog
   end
 
   def vet_checkup?(owner)
-    owner.dog.vet_checkup
+    owner.vet
   end
 
   # Refactor the following methods as methods in the Owner class!
